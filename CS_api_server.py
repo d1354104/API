@@ -9,11 +9,6 @@ app = Flask(__name__)
 executor = ThreadPoolExecutor(max_workers=10)
 
 
-
-@app.route('/homepage')
-def start_homepage():
-	return 'hello world'
-
 # C에서 업로드한 파일을 A로 전송, A에서 명령어 실행
 @app.route('/run-commands-with-file', methods=['POST'])
 def run_commands_with_file():
