@@ -12,7 +12,7 @@ def transfer_file_to_b_server(file_path, b_server_url):
 b_server_url = 'http://0.0.0.0:8080/download-file'
 
 # 전송할 파일 경로
-file_path = '/home/dke/output.txt' #pagerank 연산 파일
+file_path = '/dir/output.txt' #pagerank 연산 파일
 
 # 파일 전송 실행
 response = transfer_file_to_b_server(file_path, b_server_url)

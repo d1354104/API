@@ -17,7 +17,7 @@ def run_commands_with_file():
     file = request.files.get('file')
     if not file:
         return jsonify({"error": "No file provided"}), 400
-    local_file_path = os.path.join('/home/dke/shlee/upload_files', file.filename)    
+    local_file_path = os.path.join('/dir/upload_files', file.filename)    
     file.save(local_file_path) # B 로컬에 파일 저장
     file_size = os.path.getsize(local_file_path)  # 파일 크기 계산
 
@@ -30,7 +30,7 @@ def run_commands_with_file():
     results = []
     for command_info in commands:
         # A 서버의 파일 경로 설정 (예시)
-        remote_file_path = os.path.join("/home/dke/shlee/download_files", file.filename)
+        remote_file_path = os.path.join("/dir/download_files", file.filename)
         # 파일을 A 서버로 전송
         transfer_file_to_a_server(local_file_path, remote_file_path, command_info, file_size)
         print("File transfer completed to port:", command_info.get('port'))
@@ -41,7 +41,7 @@ def run_commands_with_file():
         result = future.result()
         results.append(result)
     
-    execute_ssh_command("10.0.0.0", 22, "dke", "asdf", "python3 /home/lwjeong/request.py")
+    execute_ssh_command("10.0.0.0", 22, "username", "password", "python3 /dir/request.py")
     
     # B에서 파일 삭제
     os.remove(local_file_path)
@@ -52,7 +52,7 @@ def transfer_file_to_a_server(local_path, remote_path, command_info, file_size):
 
     ssh = paramiko.SSHClient()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    ssh.connect(command_info['host'], port=command_info.get('port', 10100), 
+    ssh.connect(command_info['host'], port=command_info.get('port', 22),
                 username=command_info['username'], password=command_info['password'])
     sftp = ssh.open_sftp()
 
@@ -107,13 +107,13 @@ def download_file():
     c_server_info = {
     'host': '10.0.0.0',
     'port': 22,  # SSH 기본 포트
-    'username': 'dke',
-    'password': 'asdf'
+    'username': 'username',
+    'password': 'password'
     }
     
     # 파일 저장 경로 설정
-    file_path = os.path.join('/home/dke/shlee/download_files', file.filename) # B path
-    remote_path = os.path.join('/home/dke/shlee/download_file', file.filename) # C path
+    file_path = os.path.join('/dir/download_files', file.filename) # B path
+    remote_path = os.path.join('/dir/download_file', file.filename) # C path
     # 파일 저장
     file.save(file_path)
     transfer_file_to_c_server(file_path, remote_path, c_server_info)

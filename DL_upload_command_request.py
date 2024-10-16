@@ -17,42 +17,42 @@ if command_option == "pr":
         files = {'file': file}
 
         url = "http://0.0.0.0:8080/run-commands-with-file"
-        pr_command = "/home/lwjeong/pr.sh " + os.path.basename(file_name)
+        pr_command = "/dir/pr.sh " + os.path.basename(file_name)
         
         commands_pr = json.dumps([
             {
                 "host": "10.0.0.0",
                 "port": 22,
-                "username": "dke",
-                "password": "asdf",
+                "username": "username",
+                "password": "password",
                 "command": pr_command
             },
             {
                 "host": "10.0.0.0",
                 "port": 22,
-                "username": "dke",
-                "password": "asdf",
+                "username": "username",
+                "password": "password",
                 "command": pr_command
             },
             {
                 "host": "10.0.0.0",
                 "port": 22,
-                "username": "dke",
-                "password": "asdf",
+                "username": "username",
+                "password": "password",
                 "command": pr_command
             },
             {
                 "host": "10.0.0.0",
                 "port": 22,
-                "username": "dke",
-                "password": "asdf",
+                "username": "username",
+                "password": "password",
                 "command": pr_command
             },
             {
                 "host": "10.0.0.0",
                 "port": 22,
-                "username": "dke",
-                "password": "asdf",
+                "username": "username",
+                "password": "password",
                 "command": pr_command
             }
         ])
@@ -66,42 +66,42 @@ elif command_option == "ev":
         files = {'file': file}
 
         url = "http://0.0.0.0:8080/run-commands-with-file"
-        ev_command = "/home/lwjeong/ev.sh " + os.path.basename(file_name)
+        ev_command = "/dir/ev.sh " + os.path.basename(file_name)
         
         commands_ev = json.dumps([
             {
                 "host": "10.0.0.0",
                 "port": 22,
-                "username": "dke",
-                "password": "asdf",
+                "username": "username",
+                "password": "password",
                 "command": ev_command
             },
             {
                 "host": "10.0.0.0",
                 "port": 22,
-                "username": "dke",
-                "password": "asdf",
+                "username": "username",
+                "password": "password",
                 "command": ev_command
             },
             {
                 "host": "10.0.0.0",
                 "port": 22,
-                "username": "dke",
-                "password": "asdf",
+                "username": "username",
+                "password": "password",
                 "command": ev_command
             },
             {
                 "host": "10.0.0.0",
                 "port": 22,
-                "username": "dke",
-                "password": "asdf",
+                "username": "username",
+                "password": "password",
                 "command": ev_command
             },
             {
                 "host": "10.0.0.0",
                 "port": 22,
-                "username": "dke",
-                "password": "asdf",
+                "username": "username",
+                "password": "password",
                 "command": ev_command
             }
         ])
